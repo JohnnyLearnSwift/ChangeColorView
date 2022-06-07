@@ -8,12 +8,51 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet var colorView: UIView!
+    
+    @IBOutlet var redValueLabel: UILabel!
+    @IBOutlet var greenValueLabel: UILabel!
+    @IBOutlet var blueLabelValue: UILabel!
+    
+    @IBOutlet var redSlider: UISlider!
+    @IBOutlet var greenSlider: UISlider!
+    @IBOutlet var blueSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        redSlider.minimumTrackTintColor = .red
+        greenSlider.minimumTrackTintColor = .green
+        blueSlider.minimumTrackTintColor = .blue
+        
+        changeLabelValue(label: redValueLabel, slider: redSlider)
+        changeLabelValue(label: greenValueLabel, slider: greenSlider)
+        changeLabelValue(label: blueLabelValue, slider: blueSlider)
+        
+        changeViewBackgroundColor()
     }
-
-
+    
+    @IBAction func redSliderChangeValue() {
+        changeLabelValue(label: redValueLabel, slider: redSlider)
+    }
+    @IBAction func greenSliderChangeValue() {
+        changeLabelValue(label: greenValueLabel, slider: greenSlider)
+    }
+    @IBAction func blueSliderChangeValue() {
+        changeLabelValue(label: blueLabelValue, slider: blueSlider)
+    }
+    
+    func changeLabelValue (label: UILabel, slider: UISlider) {
+        label.text = String(round(slider.value * 100) / 100)
+        changeViewBackgroundColor()
+    }
+    
+    func changeViewBackgroundColor () {
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                            green: CGFloat(greenSlider.value),
+                                            blue: CGFloat (blueSlider.value),
+                                            alpha: 1.0)
+        
+    }
+    
 }
 
