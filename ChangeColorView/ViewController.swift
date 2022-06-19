@@ -28,7 +28,9 @@ class ViewController: UIViewController {
         changeLabelValue(label: greenValueLabel, slider: greenSlider)
         changeLabelValue(label: blueLabelValue, slider: blueSlider)
         
-        view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.9)
+        view.backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.5, alpha: 0.9)
+        
+        colorView.layer.cornerRadius = 10
         
         changeViewBackgroundColor()
     }
@@ -47,7 +49,6 @@ class ViewController: UIViewController {
         label.text = String(round(slider.value * 100) / 100)
         changeViewBackgroundColor()
     }
-    //Commit
     func changeViewBackgroundColor () {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
                                             green: CGFloat(greenSlider.value),
