@@ -45,11 +45,11 @@ class ViewController: UIViewController {
         changeLabelValue(label: blueLabelValue, slider: blueSlider)
     }
     
-    func changeLabelValue (label: UILabel, slider: UISlider) {
+    func changeLabelValue(label: UILabel, slider: UISlider) {
         label.text = String(round(slider.value * 100) / 100)
         changeViewBackgroundColor()
     }
-    func changeViewBackgroundColor () {
+    func changeViewBackgroundColor() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
                                             green: CGFloat(greenSlider.value),
                                             blue: CGFloat (blueSlider.value),
