@@ -44,6 +44,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
         guard let numberValue = Float(newValue) else {
+            showAlert(title: "Incorrect symbols", message: "Enter correct number")
             switch textField {
             case valueTextFields[0]:
                 textField.text = valueLabels[0].text
@@ -113,5 +114,13 @@ extension ViewController: UITextFieldDelegate {
         colorView.layer.cornerRadius = 10
         colorView.backgroundColor = color
         getRGBValues(from: color)
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
